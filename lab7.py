@@ -1,14 +1,11 @@
-Python 3.9.7 (v3.9.7:1016ef3790, Aug 30 2021, 16:39:15) 
-[Clang 6.0 (clang-600.0.57)] on darwin
-Type "help", "copyright", "credits" or "license()" for more information.
->>> # Function 1
+# Function 1
 def bmi_calculator(height, weight):
     ''' BMI is calculated using formula as below-
     BMI = (weight (lb) ÷ height2 (in)) * 703 '''
     bmi = (weight / height** 2) * 703
     return bmi
 
-#Fucntion 2
+# Function 2
 def weight_category(bmi):
     ''' Weight Category is calculated as per below chart-
     BMI Categories:
@@ -26,20 +23,26 @@ def weight_category(bmi):
         weight_cat = "Obese"
     return weight_cat
 
-#Function 3
-def test_bmi_calculator(height, weight):
-    bmi =  bmi_calculator(height, weight)
-    height_ft = height // 12
-    height_inch =  height % 12
-    print(f'A {height_ft:.0f}\'{height_inch:.0f}" person with a weight of {weight} pound has a BMI of {bmi:.2f}.' )
-    
-#Function 4
-def test_weight_category(height, weight):
-    bmi =  bmi_calculator(height, weight)
-    weight_cat = weight_category(bmi)
-    print(f'You are in {weight_cat} category with BMI of {bmi:.2f}.')
-    
-height = float(input("height (in inches)? "))
-weight = float(input("weight (in pounds)? "))
-test_bmi_calculator(height, weight)
-test_weight_category(height, weight)
+# Function 3
+def test_bmi_calculator():
+    ''' Function tests BMI based on height and weight of the person.
+    Person height is in inches and weight in pounds'''
+    person_height_width = [(74, 200), (70, 220), (76, 170), (69, 240), (68, 160)]
+    for person_detail in person_height_width:
+        height = person_detail[0]
+        weight = person_detail[1]
+        bmi = bmi_calculator(height, weight)
+        height_ft = height // 12
+        height_inch = height % 12
+        print(f'A {height_ft:.0f}\'{height_inch:.0f}" person with a weight of {weight} pound has a BMI of {bmi:.2f}.')
+
+# Function 4
+def test_weight_category():
+    ''' Function tests weight category based on BMI of the person'''
+    bmi_list = [16, 17, 18, 18.5, 19, 19.8, 20.6, 24.9, 25, 26, 27, 29.9, 30, 31.2, 32, 34.6]
+    for bmi in bmi_list:
+        weight_cat = weight_category(bmi)
+        print(f'You are in {weight_cat} category with BMI of {bmi:.2f}.')
+
+test_bmi_calculator()
+test_weight_category()
